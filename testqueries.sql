@@ -26,7 +26,7 @@ SELECT
     supplierproducts.articlenum,
     ingredients.ingredient_name,
     supplierproducts.priceperkg
-FROm Suppliers INNER JOIN supplierproducts
+FROM Suppliers INNER JOIN supplierproducts
 ON supplierproducts.supplier_id = suppliers.supplier_id INNER JOIN ingredients
 ON ingredients.ingredient_id = supplierproducts.ingredient_id;
 
@@ -35,11 +35,13 @@ ON ingredients.ingredient_id = supplierproducts.ingredient_id;
 
 SELECT 
     products.product_name,
+    ingredients.ingredient_name,
     suppliers.name
 FROM products INNER JOIN recipes
 ON recipes.product_id = products.product_id INNER JOIN recipeingredients
-ON recipeingredients.recipe_id = recipes.recipe_id INNER JOIN supplierproducts
-ON supplierproducts.ingredient_id = recipeingredients.ingredient_id INNER JOIN suppliers
+ON recipeingredients.recipe_id = recipes.recipe_id INNER JOIN ingredients
+ON ingredients.ingredient_id = recipeingredients.ingredient_id INNER JOIN supplierproducts
+ON supplierproducts.ingredient_id = ingredients.ingredient_id INNER JOIN suppliers
 ON suppliers.supplier_id = supplierproducts.supplier_id;
 
 
